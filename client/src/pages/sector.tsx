@@ -4,11 +4,19 @@ import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import { GraduationCap, Heart, Palette, Building2, Sprout, Briefcase, Users, HandHeart } from 'lucide-react';
 
-const sectorData: Record<string, { title: string; icon: any; description: string; details: string[] }> = {
+import eduImage from '@assets/generated_images/Students_collaborative_learning_education_4ac6836b.png';
+import healthImage from '@assets/generated_images/Healthcare_medical_checkup_scene_932d6355.png';
+import womenImage from '@assets/generated_images/Women_empowerment_workshop_session_f072e1f6.png';
+import communityImage from '@assets/generated_images/Community_development_project_teamwork_58719fa2.png';
+import skillImage from '@assets/generated_images/Technical_skill_training_center_a91ec481.png';
+import envImage from '@assets/generated_images/Environmental_awareness_tree_planting_ff02a864.png';
+
+const sectorData: Record<string, { title: string; icon: any; description: string; details: string[]; image?: string }> = {
   education: {
     title: 'Education',
     icon: GraduationCap,
     description: 'Providing quality education and learning opportunities for underprivileged children across communities.',
+    image: eduImage,
     details: [
       'Free education programs for underprivileged children',
       'Scholarship programs for deserving students',
@@ -22,6 +30,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     title: 'Women Empowerment',
     icon: Heart,
     description: 'Empowering women through skill development, education, and economic opportunities.',
+    image: womenImage,
     details: [
       'Vocational training programs',
       'Financial literacy workshops',
@@ -48,6 +57,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     title: 'Health',
     icon: HandHeart,
     description: 'Providing accessible healthcare services and promoting wellness in underserved communities.',
+    image: healthImage,
     details: [
       'Free medical camps and health check-ups',
       'Mobile healthcare units',
@@ -61,6 +71,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     title: 'Community Development',
     icon: Building2,
     description: 'Building sustainable and resilient communities through comprehensive development programs.',
+    image: communityImage,
     details: [
       'Infrastructure development',
       'Clean water initiatives',
@@ -74,6 +85,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     title: 'Environment Conservation',
     icon: Sprout,
     description: 'Promoting environmental sustainability and conservation through awareness and action.',
+    image: envImage,
     details: [
       'Tree plantation drives',
       'Waste management programs',
@@ -87,6 +99,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     title: 'Skill Development',
     icon: Briefcase,
     description: 'Equipping individuals with market-relevant skills for better employment opportunities.',
+    image: skillImage,
     details: [
       'Technical and vocational training',
       'Computer and IT skills',
@@ -155,6 +168,19 @@ export default function SectorPage() {
         </div>
 
         <div className="container mx-auto px-4 md:px-8 max-w-7xl py-12 md:py-16">
+          {sector.image && (
+            <div className="mb-12">
+              <Card className="overflow-hidden">
+                <img 
+                  src={sector.image} 
+                  alt={sector.title} 
+                  className="w-full h-auto max-h-[500px] object-cover"
+                  data-testid="img-sector-hero"
+                />
+              </Card>
+            </div>
+          )}
+          
           <h2 className="text-3xl font-serif font-bold mb-8">Our Initiatives</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {sector.details.map((detail, index) => (
