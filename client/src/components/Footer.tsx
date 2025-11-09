@@ -1,23 +1,28 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import logoImage from '@assets/image_1762696322960.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'About Us', href: '#about' },
-    { label: 'Our Programs', href: '#programs' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'About Us', href: '/about-us' },
+    { label: 'Impact', href: '/impact' },
+    { label: 'Programs', href: '/programs' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact', href: '/contact' },
   ];
 
-  const programs = [
-    { label: 'Education', href: '#programs' },
-    { label: 'Healthcare', href: '#programs' },
-    { label: 'Women Empowerment', href: '#programs' },
-    { label: 'Community Development', href: '#programs' },
+  const sectors = [
+    { label: 'Education', href: '/sectors/education' },
+    { label: 'Women Empowerment', href: '/sectors/women-empowerment' },
+    { label: 'Art and Culture', href: '/sectors/art-and-culture' },
+    { label: 'Health', href: '/sectors/health' },
+    { label: 'Community Development', href: '/sectors/community-development' },
+    { label: 'Environment Conservation', href: '/sectors/environment-conservation' },
+    { label: 'Skill Development', href: '/sectors/skill-development' },
+    { label: 'Social Welfare', href: '/sectors/social-welfare' },
   ];
 
   return (
@@ -25,16 +30,18 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl py-12 md:py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logoImage} alt="Shree Balaji Foundation" className="h-12 w-12" />
-              <div className="font-serif font-bold text-lg text-foreground">
-                Shree Balaji
-                <br />
-                Foundation
+            <Link href="/">
+              <div className="flex items-center gap-3 mb-4 hover-elevate rounded-md px-2 py-2 inline-flex cursor-pointer">
+                <img src={logoImage} alt="Shree Balaji Foundation" className="h-12 w-12" />
+                <div className="font-serif font-bold text-lg text-foreground">
+                  Shree Balaji
+                  <br />
+                  Foundation
+                </div>
               </div>
-            </div>
+            </Link>
             <p className="text-muted-foreground mb-4">
-              Empowering communities through education, healthcare, and sustainable development.
+              Empowering communities through education, healthcare, and sustainable development since 2015.
             </p>
             <div className="font-devanagari text-sm text-primary">
               सर्वे भवन्तु सुखिनः
@@ -46,30 +53,32 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid={`link-footer-${link.label.toLowerCase().replace(' ', '-')}`}
-                  >
-                    {link.label}
-                  </a>
+                  <Link href={link.href}>
+                    <span
+                      className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                      data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      {link.label}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Our Programs</h3>
+            <h3 className="font-semibold text-foreground mb-4">We Work In</h3>
             <ul className="space-y-2">
-              {programs.map((program) => (
-                <li key={program.label}>
-                  <a
-                    href={program.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid={`link-program-${program.label.toLowerCase().replace(' ', '-')}`}
-                  >
-                    {program.label}
-                  </a>
+              {sectors.map((sector) => (
+                <li key={sector.label}>
+                  <Link href={sector.href}>
+                    <span
+                      className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                      data-testid={`link-sector-${sector.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      {sector.label}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -80,15 +89,15 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-muted-foreground">
                 <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                <span>info@shreebalajifd.org</span>
+                <span>contact@shreebalajifoundation.org</span>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                <span>+91 123 456 7890</span>
+                <span>+91 XXXXX XXXXX</span>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                <span>Mumbai, Maharashtra, India</span>
+                <span>Maharashtra, India</span>
               </li>
             </ul>
             <div className="flex gap-2 mt-4">
@@ -96,7 +105,7 @@ export default function Footer() {
                 variant="outline"
                 size="icon"
                 className="h-8 w-8"
-                onClick={() => console.log('Facebook clicked')}
+                onClick={() => window.open('https://facebook.com', '_blank')}
                 data-testid="button-social-facebook"
               >
                 <Facebook className="h-4 w-4" />
@@ -105,7 +114,7 @@ export default function Footer() {
                 variant="outline"
                 size="icon"
                 className="h-8 w-8"
-                onClick={() => console.log('Twitter clicked')}
+                onClick={() => window.open('https://twitter.com', '_blank')}
                 data-testid="button-social-twitter"
               >
                 <Twitter className="h-4 w-4" />
@@ -114,7 +123,7 @@ export default function Footer() {
                 variant="outline"
                 size="icon"
                 className="h-8 w-8"
-                onClick={() => console.log('Instagram clicked')}
+                onClick={() => window.open('https://instagram.com', '_blank')}
                 data-testid="button-social-instagram"
               >
                 <Instagram className="h-4 w-4" />
@@ -123,7 +132,7 @@ export default function Footer() {
                 variant="outline"
                 size="icon"
                 className="h-8 w-8"
-                onClick={() => console.log('LinkedIn clicked')}
+                onClick={() => window.open('https://linkedin.com', '_blank')}
                 data-testid="button-social-linkedin"
               >
                 <Linkedin className="h-4 w-4" />

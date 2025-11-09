@@ -7,9 +7,9 @@ import Testimonials from '@/components/Testimonials';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 
-import heroImage1 from '@assets/generated_images/Children_learning_in_classroom_84a7fa6d.png';
-import heroImage2 from '@assets/generated_images/Healthcare_community_camp_scene_2969fea1.png';
-import heroImage3 from '@assets/generated_images/Women_vocational_skills_training_dcf0cbda.png';
+import heroImage1 from '@assets/image_1762697872211.png';
+import heroImage2 from '@assets/image_1762697899307.png';
+import heroImage3 from '@assets/image_1762697942154.png';
 
 import eduImage from '@assets/generated_images/Students_collaborative_learning_education_4ac6836b.png';
 import healthImage from '@assets/generated_images/Healthcare_medical_checkup_scene_932d6355.png';
@@ -133,24 +133,20 @@ export default function Home() {
     },
   ];
 
-  const handleDonateClick = () => {
-    console.log('Donate clicked - would open donation form/page');
-  };
-
   const handleVolunteerClick = () => {
     console.log('Volunteer clicked - would open volunteer registration');
   };
 
   return (
     <div className="min-h-screen">
-      <Navigation onDonateClick={handleDonateClick} />
+      <Navigation />
       <main>
         <HeroCarousel slides={heroSlides} />
         <About />
         <Programs programs={programs} />
         <Gallery images={galleryImages} />
         <Testimonials testimonials={testimonials} />
-        <CallToAction onDonateClick={handleDonateClick} onVolunteerClick={handleVolunteerClick} />
+        <CallToAction onVolunteerClick={handleVolunteerClick} />
       </main>
       <Footer />
     </div>
