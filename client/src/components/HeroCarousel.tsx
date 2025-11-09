@@ -54,22 +54,20 @@ export default function HeroCarousel({ slides, autoPlayInterval = 5000 }: HeroCa
           <div className="absolute inset-0 z-20 flex items-center">
             <div className="container mx-auto px-4 md:px-8 max-w-7xl">
               <div className="max-w-2xl">
-                <div className="backdrop-blur-md bg-white/90 dark:bg-black/80 p-8 md:p-12 rounded-md">
-                  <h1 className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-4">
-                    {slide.title}
-                  </h1>
-                  <p className="text-lg md:text-xl text-muted-foreground mb-6">
-                    {slide.subtitle}
-                  </p>
-                  <Button
-                    size="lg"
-                    className="text-lg"
-                    onClick={() => console.log(`${slide.cta} clicked`)}
-                    data-testid={`button-hero-${index}`}
-                  >
-                    {slide.cta}
-                  </Button>
-                </div>
+                <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 drop-shadow-lg">
+                  {slide.title}
+                </h1>
+                <p className="text-lg md:text-xl text-white/90 mb-6 drop-shadow-md">
+                  {slide.subtitle}
+                </p>
+                <Button
+                  size="lg"
+                  className="text-lg backdrop-blur-md bg-primary/90 border border-white/20"
+                  onClick={() => console.log(`${slide.cta} clicked`)}
+                  data-testid={`button-hero-${index}`}
+                >
+                  {slide.cta}
+                </Button>
               </div>
             </div>
           </div>
