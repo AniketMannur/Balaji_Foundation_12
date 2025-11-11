@@ -1,6 +1,10 @@
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import Programs from '@/components/Programs';
+import { PageLayout } from '@/components/PageLayout';
+import { PageHero } from '@/components/PageHero';
+import { AnimatedSection } from '@/components/AnimatedSection';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Link } from 'wouter';
+import { GraduationCap, Heart, Users, Building2, Wrench, Leaf, ArrowRight } from 'lucide-react';
 
 import eduImage from '@assets/generated_images/Students_collaborative_learning_education_4ac6836b.png';
 import healthImage from '@assets/generated_images/Healthcare_medical_checkup_scene_932d6355.png';
@@ -14,63 +18,146 @@ export default function ProgramsPage() {
     {
       title: 'Quality Education',
       category: 'Education',
-      description: 'Providing access to quality education and learning resources for underprivileged children.',
+      description: 'Providing access to quality education and learning resources for underprivileged children. We focus on holistic development through innovative teaching methods.',
       image: eduImage,
+      icon: GraduationCap,
+      color: 'from-blue-500 to-blue-600',
     },
     {
       title: 'Healthcare Services',
       category: 'Healthcare',
-      description: 'Free medical camps and healthcare services for communities in need.',
+      description: 'Free medical camps and healthcare services for communities in need. Regular health checkups and awareness programs for preventive care.',
       image: healthImage,
+      icon: Heart,
+      color: 'from-red-500 to-red-600',
     },
     {
       title: 'Women Empowerment',
       category: 'Empowerment',
-      description: 'Skill development and empowerment programs for women and girls.',
+      description: 'Skill development and empowerment programs for women and girls. Creating opportunities for economic independence and leadership.',
       image: womenImage,
+      icon: Users,
+      color: 'from-pink-500 to-pink-600',
     },
     {
       title: 'Community Development',
       category: 'Community',
-      description: 'Building sustainable communities through infrastructure and social programs.',
+      description: 'Building sustainable communities through infrastructure and social programs. Strengthening local institutions and community bonds.',
       image: communityImage,
+      icon: Building2,
+      color: 'from-purple-500 to-purple-600',
     },
     {
       title: 'Skill Training',
       category: 'Training',
-      description: 'Vocational training programs to enhance employability and self-reliance.',
+      description: 'Vocational training programs to enhance employability and self-reliance. Industry-aligned courses for better job prospects.',
       image: skillImage,
+      icon: Wrench,
+      color: 'from-orange-500 to-orange-600',
     },
     {
       title: 'Environmental Initiatives',
       category: 'Environment',
-      description: 'Promoting environmental awareness and sustainable practices in communities.',
+      description: 'Promoting environmental awareness and sustainable practices in communities. Tree plantation drives and waste management programs.',
       image: envImage,
+      icon: Leaf,
+      color: 'from-green-500 to-green-600',
     },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navigation />
-      
-      <main className="flex-1">
-        <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-background py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6" data-testid="heading-programs">
-              Our Programs
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl">
-              Comprehensive initiatives designed to create sustainable impact across communities
-            </p>
+    <PageLayout>
+      <PageHero
+        title="Our Programs"
+        subtitle="Creating Lasting Impact"
+        description="Comprehensive initiatives designed to create sustainable impact across communities through education, healthcare, empowerment, and development."
+        tagline="What We Do"
+        primaryCta={{ label: 'Get Involved', href: '/contact' }}
+        secondaryCta={{ label: 'View Impact', href: '/impact' }}
+      />
+
+      <AnimatedSection background="white">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Transforming Lives Through Action
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-3xl mx-auto">
+            Our programs are designed to address the most pressing needs of underserved communities,
+            creating pathways to sustainable development and empowerment.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {programs.map((program, index) => {
+            const Icon = program.icon;
+            return (
+              <Card
+                key={program.title}
+                className={`overflow-hidden hover-elevate opacity-0 animate-fade-in-up delay-${
+                  (index + 2) * 100
+                }`}
+                data-testid={`card-program-${program.category.toLowerCase()}`}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                  <div className={`absolute top-4 left-4 p-3 rounded-xl bg-gradient-to-br ${program.color}`}>
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="mb-2">
+                    <span className="text-sm font-semibold text-orange-500 uppercase tracking-wide">
+                      {program.category}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    {program.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    {program.description}
+                  </p>
+                  <Link href={`/sectors/${program.category.toLowerCase()}`}>
+                    <Button variant="ghost" className="group">
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection background="gray" delay={100}>
+        <div className="bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl p-8 md:p-12 text-white text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
+          <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+            Join us in our mission to create lasting change. Whether through volunteering, donations,
+            or partnerships, your support makes a real difference.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/contact">
+              <Button size="lg" className="bg-white text-teal-600 hover:bg-gray-100">
+                Contact Us
+              </Button>
+            </Link>
+            <Link href="/feedback">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white/20"
+              >
+                Share Feedback
+              </Button>
+            </Link>
           </div>
         </div>
-
-        <div className="py-8">
-          <Programs programs={programs} />
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      </AnimatedSection>
+    </PageLayout>
   );
 }
