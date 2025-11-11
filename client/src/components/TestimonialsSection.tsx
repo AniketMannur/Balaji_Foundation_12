@@ -30,7 +30,7 @@ export function TestimonialsSection() {
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-orange-500 font-semibold text-lg mb-3 animate-fade-in-up">
+          <p className="text-secondary font-semibold text-lg mb-3 animate-fade-in-up">
             Testimonials
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in-up delay-100">
@@ -50,7 +50,7 @@ export function TestimonialsSection() {
             >
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between mb-4">
-                  <Quote className="w-10 h-10 text-orange-500/20" />
+                  <Quote className="w-10 h-10 text-secondary/20" />
                   <div className="flex gap-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />

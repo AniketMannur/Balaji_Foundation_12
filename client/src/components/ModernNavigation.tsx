@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Heart, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import logoImage from "@assets/image_1762879919500.png";
 
 export function ModernNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,17 +48,19 @@ export function ModernNavigation() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-md"
-          : "bg-transparent"
+          : "bg-gradient-to-b from-black/40 to-transparent"
       }`}
       data-testid="navigation-main"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-2 cursor-pointer hover-elevate active-elevate-2 rounded-md p-2 -ml-2">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center animate-fade-in">
-                <Heart className="w-6 h-6 text-white" fill="white" />
-              </div>
+            <div className="flex items-center gap-3 cursor-pointer hover-elevate active-elevate-2 rounded-md p-2 -ml-2">
+              <img 
+                src={logoImage} 
+                alt="Shree Balaji Foundation Logo" 
+                className="w-14 h-14 object-contain animate-fade-in"
+              />
               <div className="flex flex-col animate-slide-in-left delay-100">
                 <span className={`font-bold text-lg ${isScrolled ? "text-gray-900 dark:text-white" : "text-white"}`}>
                   Shree Balaji Foundation
@@ -110,7 +113,7 @@ export function ModernNavigation() {
                     variant="ghost"
                     className={`animate-fade-in-down delay-${(index + 1) * 100} ${
                       location === link.href
-                        ? "bg-orange-500/10 text-orange-600 dark:text-orange-400"
+                        ? "bg-primary/10 text-primary dark:text-primary"
                         : isScrolled
                         ? "text-gray-700 dark:text-gray-200"
                         : "text-white hover:text-white"
@@ -125,21 +128,8 @@ export function ModernNavigation() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3 animate-fade-in-down delay-500">
-            <Link href="/feedback">
-              <Button
-                variant="outline"
-                className={`${
-                  isScrolled
-                    ? "border-gray-300 dark:border-gray-600"
-                    : "border-white text-white hover:bg-white/10"
-                }`}
-                data-testid="button-feedback"
-              >
-                Feedback
-              </Button>
-            </Link>
             <Button
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
+              variant="default"
               data-testid="button-donate"
             >
               Donate Now
@@ -188,7 +178,7 @@ export function ModernNavigation() {
                   <div
                     className={`px-4 py-2 rounded-md cursor-pointer hover-elevate ${
                       location === link.href
-                        ? "bg-orange-500/10 text-orange-600 dark:text-orange-400"
+                        ? "bg-primary/10 text-primary dark:text-primary"
                         : "text-gray-700 dark:text-gray-200"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -200,18 +190,9 @@ export function ModernNavigation() {
               );
             })}
             <div className="pt-4 space-y-2 border-t border-gray-200 dark:border-gray-800">
-              <Link href="/feedback">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  data-testid="button-mobile-feedback"
-                >
-                  Feedback
-                </Button>
-              </Link>
               <Button
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
+                variant="default"
+                className="w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
                 data-testid="button-mobile-donate"
               >

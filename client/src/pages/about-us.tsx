@@ -4,7 +4,6 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { Card } from '@/components/ui/card';
 import { Heart, Users, Target, Award, Shield, TrendingUp } from 'lucide-react';
 import aboutImage from '@assets/download_1762698540874.png';
-import logoImage from '@assets/image_1762876982725.png';
 
 export default function AboutUs() {
   const values = [
@@ -71,25 +70,17 @@ export default function AboutUs() {
           />
         </Card>
 
-        <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
+        <div className="mt-16">
           <div>
-            <img
-              src={logoImage}
-              alt="Shree Balaji Foundation Logo"
-              className="rounded-2xl shadow-2xl w-full"
-              data-testid="img-foundation-logo"
-            />
-          </div>
-          <div>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
               Who We Are
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-4">
+            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-4 max-w-4xl mx-auto text-center">
               Shree Balaji Foundation is a registered non-profit organization committed to making a meaningful 
               impact in the areas of Health, Education, Skill Development, Women Empowerment, Community Development, 
               and Social Development.
             </p>
-            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed max-w-4xl mx-auto text-center">
               Registered under 12A and 80G of the Income Tax Act, as well as CSR-1 & Niti Aayog, we ensure complete 
               transparency and accountability through regular filing of ITRs and annual audit reports for the past 10 years.
             </p>
@@ -118,7 +109,7 @@ export default function AboutUs() {
                 }`}
                 data-testid={`card-${value.title.toLowerCase()}`}
               >
-                <div className="w-14 h-14 mb-4 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
+                <div className="w-14 h-14 mb-4 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center">
                   <Icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -133,7 +124,7 @@ export default function AboutUs() {
 
       <AnimatedSection background="white" delay={200}>
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="p-8 bg-gradient-to-br from-orange-500 to-orange-600 text-white hover-elevate">
+          <Card className="p-8 bg-gradient-to-br from-primary to-primary/80 text-white hover-elevate">
             <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
             <p className="text-white/90 text-lg leading-relaxed">
               To make a positive impact on society through our multifaceted approach focusing on Health/Medical, 
@@ -143,9 +134,9 @@ export default function AboutUs() {
             </p>
           </Card>
 
-          <Card className="p-8 bg-gradient-to-br from-teal-500 to-cyan-500 text-white hover-elevate">
+          <Card className="p-8 bg-gradient-to-br from-secondary to-secondary/80 text-gray-900 dark:text-white hover-elevate">
             <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
-            <p className="text-white/90 text-lg leading-relaxed">
+            <p className="text-gray-900/90 dark:text-white/90 text-lg leading-relaxed">
               To create lasting change by addressing critical needs in our communities and uplifting those who 
               need it most through transformative projects. We envision a society where every individual has 
               access to quality healthcare, education, and opportunities for growth.

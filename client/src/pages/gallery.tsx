@@ -47,7 +47,7 @@ export default function GalleryPage() {
                   (index + 2) * 100
                 }`}
               >
-                <div className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
+                <div className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-secondary/80 to-secondary rounded-xl flex items-center justify-center">
                   <Icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
@@ -89,7 +89,7 @@ export default function GalleryPage() {
               </Card>
             </div>
 
-            <Card className="mt-8 p-8 bg-gradient-to-r from-teal-500 to-cyan-500 text-white">
+            <Card className="mt-8 p-8 bg-gradient-to-r from-primary/70 to-primary text-white">
               <h3 className="text-2xl font-bold mb-4">Community Health Initiatives</h3>
               <p className="text-white/90 text-lg leading-relaxed">
                 From hydration stations to emergency medical care, our dedicated team ensures the
@@ -120,7 +120,7 @@ export default function GalleryPage() {
             </Card>
           </div>
 
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-8 md:p-12 text-white text-center">
+          <div className="bg-gradient-to-r from-secondary/80 to-secondary rounded-2xl p-8 md:p-12 text-white text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Every Picture Tells a Story</h2>
             <p className="text-white/90 text-lg mb-4 max-w-3xl mx-auto">
               These images showcase the dedication and compassion of our team, the resilience of the

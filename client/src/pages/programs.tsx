@@ -53,7 +53,7 @@ export default function ProgramsPage() {
       description: 'Vocational training programs to enhance employability and self-reliance. Industry-aligned courses for better job prospects.',
       image: skillImage,
       icon: Wrench,
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-secondary/80 to-secondary',
     },
     {
       title: 'Environmental Initiatives',
@@ -110,7 +110,7 @@ export default function ProgramsPage() {
                 </div>
                 <div className="p-6">
                   <div className="mb-2">
-                    <span className="text-sm font-semibold text-orange-500 uppercase tracking-wide">
+                    <span className="text-sm font-semibold text-secondary uppercase tracking-wide">
                       {program.category}
                     </span>
                   </div>
@@ -134,7 +134,7 @@ export default function ProgramsPage() {
       </AnimatedSection>
 
       <AnimatedSection background="gray" delay={100}>
-        <div className="bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl p-8 md:p-12 text-white text-center">
+        <div className="bg-gradient-to-r from-primary/70 to-primary rounded-2xl p-8 md:p-12 text-white text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
             Join us in our mission to create lasting change. Whether through volunteering, donations,
@@ -142,7 +142,7 @@ export default function ProgramsPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contact">
-              <Button size="lg" className="bg-white text-teal-600 hover:bg-gray-100">
+              <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
                 Contact Us
               </Button>
             </Link>

@@ -59,7 +59,7 @@ export function ProgramsSection() {
     <section className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-orange-500 font-semibold text-lg mb-3 animate-fade-in-up">
+          <p className="text-secondary font-semibold text-lg mb-3 animate-fade-in-up">
             Our Programs
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in-up delay-100">
@@ -71,46 +71,57 @@ export function ProgramsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((program, index) => {
             const Icon = program.icon;
             return (
-              <Card
+              <div
                 key={program.title}
-                className={`hover-elevate border-2 overflow-hidden animate-fade-in-up delay-${
+                className={`group relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden animate-fade-in-up delay-${
                   (index + 3) * 100
-                }`}
+                } hover:-translate-y-2`}
                 data-testid={`card-program-${program.title.toLowerCase().replace(/\s+/g, "-")}`}
               >
-                <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-4">
-                  <div
-                    className={`w-14 h-14 bg-gradient-to-br ${program.color} rounded-full flex items-center justify-center flex-shrink-0`}
-                  >
-                    <Icon className="w-7 h-7 text-white" />
+                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${program.color}`} />
+                
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div
+                      className={`w-16 h-16 bg-gradient-to-br ${program.color} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}
+                    >
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {program.title}
+                    </h3>
                   </div>
-                  <CardTitle className="text-xl">{program.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-600 dark:text-gray-400">{program.description}</p>
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <div>
-                      <p className="text-2xl font-bold text-orange-500">
+                  
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {program.description}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-4 border-t-2 border-gray-200 dark:border-gray-700">
+                    <div className="space-y-1">
+                      <p className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                         {program.beneficiaries}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Beneficiaries</p>
+                      <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                        Beneficiaries
+                      </p>
                     </div>
                     <Link href="/programs">
                       <Button
                         variant="ghost"
-                        className="text-orange-500 hover:text-orange-600"
+                        size="sm"
+                        className="text-primary group-hover:bg-primary/10 transition-colors"
                         data-testid={`button-learn-${program.title.toLowerCase().replace(/\s+/g, "-")}`}
                       >
                         Learn More →
                       </Button>
                     </Link>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             );
           })}
         </div>
@@ -119,7 +130,8 @@ export function ProgramsSection() {
           <Link href="/programs">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8"
+              variant="secondary"
+              className="px-8"
               data-testid="button-view-all-programs"
             >
               View All Programs

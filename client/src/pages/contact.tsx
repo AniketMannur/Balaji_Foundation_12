@@ -6,9 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Mail, Phone, MapPin, Clock, Star } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [rating, setRating] = useState(0);
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -59,63 +63,126 @@ export default function Contact() {
               Fill out the form below and we'll respond within 24 hours.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-gray-900 dark:text-white">
-                  Name
-                </Label>
-                <Input
-                  id="name"
-                  placeholder="Your full name"
-                  className="border-gray-300"
-                  data-testid="input-name"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-gray-900 dark:text-white">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  className="border-gray-300"
-                  data-testid="input-email"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="text-gray-900 dark:text-white">
-                  Phone
-                </Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="Your phone number"
-                  className="border-gray-300"
-                  data-testid="input-phone"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-gray-900 dark:text-white">
-                  Message
-                </Label>
-                <Textarea
-                  id="message"
-                  placeholder="How can we help you?"
-                  rows={5}
-                  className="border-gray-300"
-                  data-testid="input-message"
-                />
-              </div>
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-orange-500 hover:bg-orange-600"
-                data-testid="button-submit"
-              >
-                Send Message
-              </Button>
-            </form>
+            <Card className="p-8 border-2">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-gray-900 dark:text-white">
+                      Full Name *
+                    </Label>
+                    <Input
+                      id="name"
+                      placeholder="Your full name"
+                      required
+                      data-testid="input-name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-gray-900 dark:text-white">
+                      Email Address *
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      required
+                      data-testid="input-email"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="phone" className="text-gray-900 dark:text-white">
+                      Phone Number
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="Your phone number"
+                      data-testid="input-phone"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="subject" className="text-gray-900 dark:text-white">
+                      Subject *
+                    </Label>
+                    <Input
+                      id="subject"
+                      placeholder="Subject of your message"
+                      required
+                      data-testid="input-subject"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="category" className="text-gray-900 dark:text-white">
+                    Category *
+                  </Label>
+                  <Select required>
+                    <SelectTrigger data-testid="select-category">
+                      <SelectValue placeholder="Select a category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="general">General Inquiry</SelectItem>
+                      <SelectItem value="volunteer">Volunteer Opportunities</SelectItem>
+                      <SelectItem value="donation">Donations</SelectItem>
+                      <SelectItem value="partnership">Partnership</SelectItem>
+                      <SelectItem value="feedback">Feedback</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="message" className="text-gray-900 dark:text-white">
+                    Message *
+                  </Label>
+                  <Textarea
+                    id="message"
+                    placeholder="How can we help you?"
+                    rows={6}
+                    required
+                    data-testid="input-message"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-gray-900 dark:text-white">
+                    Rate Your Experience (Optional)
+                  </Label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setRating(star)}
+                        className="hover-elevate active-elevate-2 rounded-md p-1"
+                        data-testid={`button-rating-${star}`}
+                      >
+                        <Star
+                          className={`w-8 h-8 ${
+                            star <= rating
+                              ? 'fill-secondary text-secondary'
+                              : 'text-gray-300 dark:text-gray-600'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full"
+                  data-testid="button-submit"
+                >
+                  Send Message
+                </Button>
+              </form>
+            </Card>
           </div>
 
           <div className="space-y-6">
@@ -133,7 +200,7 @@ export default function Contact() {
                   }`}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center flex-shrink-0">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -148,7 +215,7 @@ export default function Contact() {
               );
             })}
 
-            <Card className="p-8 bg-gradient-to-br from-teal-500 to-cyan-500 text-white mt-8">
+            <Card className="p-8 bg-gradient-to-br from-primary to-primary/80 text-white mt-8">
               <h3 className="text-2xl font-bold mb-4">Need Immediate Assistance?</h3>
               <p className="text-white/90 mb-6">
                 For urgent matters or immediate support, please call us directly during business hours
@@ -167,14 +234,14 @@ export default function Contact() {
       </AnimatedSection>
 
       <AnimatedSection background="gray" delay={100}>
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-8 md:p-12 text-white text-center">
+        <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-8 md:p-12 text-white text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Make an Impact?</h2>
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
             Join us in creating positive change. Whether you want to volunteer, donate, or partner with
             us, we welcome your support in making a difference.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100">
+            <Button size="lg" variant="secondary">
               Donate Now
             </Button>
             <Button

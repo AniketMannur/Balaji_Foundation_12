@@ -43,7 +43,7 @@ export default function Footer() {
             <p className="text-gray-300 mb-4">
               Empowering communities through education, healthcare, and sustainable development since 2013.
             </p>
-            <div className="font-devanagari text-sm text-orange-400">
+            <div className="font-devanagari text-sm text-secondary">
               सर्वे भवन्तु सुखिनः | सर्वे सन्तु निरामयाः
             </div>
           </div>
@@ -55,7 +55,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link href={link.href}>
                     <span
-                      className="text-gray-300 hover:text-orange-400 transition-colors cursor-pointer"
+                      className="text-gray-300 hover:text-secondary transition-colors cursor-pointer"
                       data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {link.label}
@@ -73,7 +73,7 @@ export default function Footer() {
                 <li key={sector.label}>
                   <Link href={sector.href}>
                     <span
-                      className="text-gray-300 hover:text-orange-400 transition-colors cursor-pointer"
+                      className="text-gray-300 hover:text-secondary transition-colors cursor-pointer"
                       data-testid={`link-sector-${sector.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {sector.label}
@@ -88,15 +88,15 @@ export default function Footer() {
             <h3 className="font-semibold text-white mb-4 text-lg">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-gray-300">
-                <Mail className="h-5 w-5 mt-0.5 flex-shrink-0 text-orange-400" />
+                <Mail className="h-5 w-5 mt-0.5 flex-shrink-0 text-secondary" />
                 <span>contact@shreebalajifoundation.org</span>
               </li>
               <li className="flex items-start gap-2 text-gray-300">
-                <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 text-orange-400" />
+                <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 text-secondary" />
                 <span>+91 XXXXX XXXXX</span>
               </li>
               <li className="flex items-start gap-2 text-gray-300">
-                <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-orange-400" />
+                <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-secondary" />
                 <span>Maharashtra, India</span>
               </li>
             </ul>
@@ -104,7 +104,7 @@ export default function Footer() {
               <Button
                 variant="outline"
                 size="icon"
-                className="border-gray-600 hover:border-orange-400 hover:bg-orange-400/10 text-white"
+                className="border-gray-600 text-white"
                 onClick={() => window.open('https://facebook.com', '_blank')}
                 data-testid="button-social-facebook"
               >
@@ -113,7 +113,7 @@ export default function Footer() {
               <Button
                 variant="outline"
                 size="icon"
-                className="border-gray-600 hover:border-orange-400 hover:bg-orange-400/10 text-white"
+                className="border-gray-600 text-white"
                 onClick={() => window.open('https://twitter.com', '_blank')}
                 data-testid="button-social-twitter"
               >
@@ -122,7 +122,7 @@ export default function Footer() {
               <Button
                 variant="outline"
                 size="icon"
-                className="border-gray-600 hover:border-orange-400 hover:bg-orange-400/10 text-white"
+                className="border-gray-600 text-white"
                 onClick={() => window.open('https://instagram.com', '_blank')}
                 data-testid="button-social-instagram"
               >
@@ -131,7 +131,7 @@ export default function Footer() {
               <Button
                 variant="outline"
                 size="icon"
-                className="border-gray-600 hover:border-orange-400 hover:bg-orange-400/10 text-white"
+                className="border-gray-600 text-white"
                 onClick={() => window.open('https://linkedin.com', '_blank')}
                 data-testid="button-social-linkedin"
               >
@@ -147,10 +147,10 @@ export default function Footer() {
               © {currentYear} Shree Balaji Foundation. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-orange-400">
+              <a href="#" className="text-gray-400 hover:text-secondary">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-orange-400">
+              <a href="#" className="text-gray-400 hover:text-secondary">
                 Terms of Service
               </a>
             </div>

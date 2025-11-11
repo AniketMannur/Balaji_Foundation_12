@@ -39,14 +39,14 @@ export default function Impact() {
       title: 'Communities Served',
       value: '100+',
       description: 'Villages and urban areas reached',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-secondary/80 to-secondary',
     },
     {
       icon: Sprout,
       title: 'Environmental Projects',
       value: '50+',
       description: 'Tree plantation and conservation initiatives',
-      color: 'from-teal-500 to-teal-600',
+      color: 'from-primary/70 to-primary',
     },
   ];
 
@@ -140,7 +140,7 @@ export default function Impact() {
               }`}
             >
               <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary/80 to-secondary rounded-xl flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-lg">{milestone.year}</span>
                 </div>
                 <div>
@@ -159,7 +159,7 @@ export default function Impact() {
 
       <AnimatedSection background="white" delay={200}>
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="p-8 bg-gradient-to-br from-teal-500 to-cyan-500 text-white">
+          <Card className="p-8 bg-gradient-to-br from-primary/70 to-primary text-white">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
                 <Target className="h-7 w-7 text-white" />
@@ -178,7 +178,7 @@ export default function Impact() {
             </p>
           </Card>
 
-          <Card className="p-8 bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+          <Card className="p-8 bg-gradient-to-br from-secondary/80 to-secondary text-white">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
                 <TrendingUp className="h-7 w-7 text-white" />

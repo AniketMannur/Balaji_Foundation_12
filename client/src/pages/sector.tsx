@@ -5,7 +5,7 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { Card } from '@/components/ui/card';
 import { GraduationCap, Heart, Palette, Building2, Sprout, Briefcase, Users, HandHeart, CheckCircle2 } from 'lucide-react';
 
-import eduImage from '@assets/generated_images/Students_collaborative_learning_education_4ac6836b.png';
+import eduImage from '@assets/image_1762880339582.png';
 import healthImage from '@assets/generated_images/Healthcare_medical_checkup_scene_932d6355.png';
 import womenImage from '@assets/generated_images/Women_empowerment_workshop_session_f072e1f6.png';
 import communityImage from '@assets/generated_images/Community_development_project_teamwork_58719fa2.png';
@@ -18,7 +18,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     icon: GraduationCap,
     description: 'Providing quality education and learning opportunities for underprivileged children across communities.',
     image: eduImage,
-    color: 'from-blue-500 to-blue-600',
+    color: 'from-primary to-primary/80',
     details: [
       'Free education programs for underprivileged children',
       'Scholarship programs for deserving students',
@@ -77,7 +77,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     icon: Building2,
     description: 'Building sustainable and resilient communities through comprehensive development programs.',
     image: communityImage,
-    color: 'from-teal-500 to-teal-600',
+    color: 'from-primary/70 to-primary',
     details: [
       'Infrastructure development',
       'Clean water initiatives',
@@ -107,7 +107,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     icon: Briefcase,
     description: 'Equipping individuals with market-relevant skills for better employment opportunities.',
     image: skillImage,
-    color: 'from-orange-500 to-orange-600',
+    color: 'from-secondary/80 to-secondary',
     details: [
       'Technical and vocational training',
       'Computer and IT skills',
@@ -121,7 +121,7 @@ const sectorData: Record<string, { title: string; icon: any; description: string
     title: 'Social Welfare',
     icon: Users,
     description: 'Comprehensive welfare programs addressing various social needs and challenges.',
-    color: 'from-cyan-500 to-cyan-600',
+    color: 'from-primary to-secondary/30',
     details: [
       'Food distribution programs',
       'Elderly care services',

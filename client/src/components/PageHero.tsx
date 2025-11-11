@@ -32,7 +32,7 @@ export function PageHero({
   return (
     <div className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-500 animate-gradient"
+        className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary to-secondary/40 animate-gradient"
         data-testid="page-hero-background"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -46,7 +46,7 @@ export function PageHero({
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
         {tagline && (
-          <p className="text-orange-500 dark:text-orange-400 text-lg font-medium tracking-wide uppercase mb-4 opacity-0 animate-fade-in-up">
+          <p className="text-secondary dark:text-secondary text-lg font-medium tracking-wide uppercase mb-4 opacity-0 animate-fade-in-up">
             {tagline}
           </p>
         )}
@@ -54,7 +54,7 @@ export function PageHero({
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 opacity-0 animate-fade-in-up delay-100">
           {title}
           {subtitle && (
-            <span className="block text-orange-500 mt-2">{subtitle}</span>
+            <span className="block text-secondary mt-2">{subtitle}</span>
           )}
         </h1>
 
@@ -70,7 +70,8 @@ export function PageHero({
               <Link href={primaryCta.href}>
                 <Button
                   size="lg"
-                  className="bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300"
+                  variant="secondary"
+                  className="rounded-full shadow-xl hover:shadow-2xl transition-all duration-300"
                   data-testid="button-primary-cta"
                 >
                   {primaryCta.label}
@@ -83,7 +84,7 @@ export function PageHero({
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full border-2 border-orange-500 text-white hover:bg-orange-500/20 backdrop-blur-sm shadow-xl"
+                  className="rounded-full border-2 border-white text-white hover:bg-white/20 backdrop-blur-sm shadow-xl"
                   data-testid="button-secondary-cta"
                 >
                   {secondaryCta.label}
