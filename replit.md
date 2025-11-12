@@ -4,16 +4,24 @@
 
 This is a frontend-only website for Shree Balaji Foundation, a non-profit organization focused on empowering communities through education, healthcare, women empowerment, and social welfare programs. The website serves as the foundation's digital presence, showcasing their mission, programs, impact stories, and providing ways for visitors to connect and support the cause.
 
-The application is built as a modern single-page application (SPA) with a React frontend served by an Express/Vite development server, following a component-driven architecture with a focus on trust-building, impact visualization, and emotional connection with visitors.
+The application is built as a modern single-page application (SPA) with a pure React frontend using Vite for development and production builds. The architecture is completely frontend-only, making it suitable for static hosting platforms like Vercel, Netlify, or GitHub Pages.
 
 ## Recent Changes (November 12, 2025)
 
+### Latest Session
+- **Frontend-Only Conversion**: Completely removed Express server and all backend code
+- **Vercel Deployment Ready**: Configured for static deployment with vercel.json
+- **Education Image Update**: Replaced education program image with user-provided image
+- **Donate Button Styling**: Changed "Donate Now" button color to orange (#FF6B35)
+- **Dependency Cleanup**: Removed 138 unused server-related packages (Express, Passport, Drizzle, etc.)
+- **Build Optimization**: Pure Vite build pipeline for faster development and production builds
+
+### Previous Updates
 - **Hero Animation**: Added smooth floating animation to hero image for dynamic visual appeal
 - **Footer Enhancement**: Redesigned footer with single-line foundation text, larger logo (48px), and centered copyright
 - **Navigation Improvement**: Added "Share Feedback" as dropdown under "Contact" in navigation menu
 - **Programs Page Fix**: Fixed all "Learn More" button links to work correctly with proper sector routing
 - **Feedback Page Refactor**: Converted feedback page to use PageLayout component, eliminating duplicate navigation/footer
-- **Code Simplification**: Removed unused backend schemas and storage logic, maintaining frontend-only architecture
 - **Mobile Responsiveness**: Maintained all mobile menu functionality including collapsible navigation
 
 ## User Preferences
@@ -58,41 +66,30 @@ Preferred communication style: Simple, everyday language.
 - Card-based layouts for programs, testimonials, and impact metrics
 - Modal/dialog patterns for image galleries and forms
 
-### Backend Architecture
+### Deployment & Build
 
-**Server Framework**
-- **Express.js** with TypeScript serving as Vite development server
-- **ESM module system** (type: "module" in package.json)
-- Custom Vite integration for serving the frontend in development
-- **Frontend-only architecture** - no API endpoints or database operations
+**Development**
+- Pure Vite development server running on port 5000
+- Hot Module Replacement (HMR) for instant updates during development
+- Command: `npm run dev`
 
-**Middleware Stack**
-- JSON body parsing (maintained for future extensibility)
-- URL-encoded form data parsing
-- Request logging middleware with timing and response capture
+**Production Build**
+- Static site generation via Vite build
+- Output directory: `dist/`
+- Command: `npm run build`
+- Preview: `npm run preview`
 
-**Development Setup**
-- Custom Vite middleware integration for HMR during development
-- Separate build process: Vite for frontend, esbuild for backend bundling
-- Development server runs on tsx with watch mode
-- Production build creates bundled server in `dist/` and static assets in `dist/public/`
+**Deployment Platforms**
+- **Vercel**: Configured with vercel.json for seamless deployment
+- **Netlify**: Compatible with standard SPA deployment
+- **GitHub Pages**: Can be deployed as static site
+- **Any Static Host**: Works with any platform supporting SPAs
 
-**API Structure**
-- Minimal route registration system in `server/routes.ts` (prepared for future endpoints)
-- Empty storage interface in `server/storage.ts` (ready for backend expansion)
-- No active API endpoints - all content is static/frontend-only
-
-### Data Storage Solutions
-
-**Current State**
-- Frontend-only application with no backend database
-- All content is hardcoded in React components
-- `shared/schema.ts` and `server/storage.ts` maintained as minimal stubs for future extensibility
-
-**Future Expansion**
-- Database dependencies (Drizzle ORM, Neon PostgreSQL) installed but not configured
-- Ready for backend API implementation when needed
-- Storage interface pattern prepared for easy CRUD operation addition
+**Build Configuration**
+- Vite config optimized for frontend-only builds
+- All assets bundled and optimized
+- Client-side routing handled via Wouter
+- No server-side dependencies required
 
 ### External Dependencies
 
@@ -124,11 +121,8 @@ Preferred communication style: Simple, everyday language.
 **Asset Management**
 - Images stored in `attached_assets/` directory
 - Vite alias `@assets` for easy asset imports
-- Generated images for programs, testimonials, gallery sections
-
-**Database Service**
-- **Neon Serverless PostgreSQL** (@neondatabase/serverless) - Installed for future use
-- Not currently configured or used (frontend-only architecture)
+- Custom images for programs (including user-provided education image)
+- All assets optimized and bundled during build process
 
 ## Key Features
 
