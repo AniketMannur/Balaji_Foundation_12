@@ -2,9 +2,19 @@
 
 ## Overview
 
-This is a full-stack website for Shree Balaji Foundation, a non-profit organization focused on empowering communities through education, healthcare, women empowerment, and social welfare programs. The website serves as the foundation's digital presence, showcasing their mission, programs, impact stories, and providing ways for visitors to connect and support the cause.
+This is a frontend-only website for Shree Balaji Foundation, a non-profit organization focused on empowering communities through education, healthcare, women empowerment, and social welfare programs. The website serves as the foundation's digital presence, showcasing their mission, programs, impact stories, and providing ways for visitors to connect and support the cause.
 
-The application is built as a modern single-page application (SPA) with a React frontend and Express backend, following a component-driven architecture with a focus on trust-building, impact visualization, and emotional connection with visitors.
+The application is built as a modern single-page application (SPA) with a React frontend served by an Express/Vite development server, following a component-driven architecture with a focus on trust-building, impact visualization, and emotional connection with visitors.
+
+## Recent Changes (November 12, 2025)
+
+- **Hero Animation**: Added smooth floating animation to hero image for dynamic visual appeal
+- **Footer Enhancement**: Redesigned footer with single-line foundation text, larger logo (48px), and centered copyright
+- **Navigation Improvement**: Added "Share Feedback" as dropdown under "Contact" in navigation menu
+- **Programs Page Fix**: Fixed all "Learn More" button links to work correctly with proper sector routing
+- **Feedback Page Refactor**: Converted feedback page to use PageLayout component, eliminating duplicate navigation/footer
+- **Code Simplification**: Removed unused backend schemas and storage logic, maintaining frontend-only architecture
+- **Mobile Responsiveness**: Maintained all mobile menu functionality including collapsible navigation
 
 ## User Preferences
 
@@ -31,12 +41,14 @@ Preferred communication style: Simple, everyday language.
 - Typography system uses Inter for body text, Poppins for headings, and Noto Serif Devanagari for Sanskrit text
 - Spacing primitives based on Tailwind's scale (4, 6, 8, 12, 16, 20)
 - Responsive design with mobile-first breakpoints
+- Custom animations including `float-hero` for smooth floating effects
 
 **Component Structure**
-- Page-level components in `client/src/pages/` (Home, About Us, Programs, Impact, Gallery, Contact, Sector pages)
-- Reusable UI components in `client/src/components/` (Navigation, HeroCarousel, About, Programs, Gallery, Testimonials, CallToAction, Footer)
+- Page-level components in `client/src/pages/` (Home, About Us, Programs, Impact, Gallery, Contact, Feedback, Sector pages)
+- Reusable UI components in `client/src/components/` (ModernNavigation, ModernHero, About, Programs, Gallery, Testimonials, CallToAction, Footer, PageLayout)
 - Component examples in `client/src/components/examples/` for development and testing
 - Shadcn UI components in `client/src/components/ui/`
+- Consistent use of PageLayout wrapper for all pages to avoid duplicate navigation/footer
 
 **Key Design Patterns**
 - Component composition pattern for building complex UIs from simple components
@@ -49,15 +61,15 @@ Preferred communication style: Simple, everyday language.
 ### Backend Architecture
 
 **Server Framework**
-- **Express.js** with TypeScript for the HTTP server
+- **Express.js** with TypeScript serving as Vite development server
 - **ESM module system** (type: "module" in package.json)
 - Custom Vite integration for serving the frontend in development
+- **Frontend-only architecture** - no API endpoints or database operations
 
 **Middleware Stack**
-- JSON body parsing with raw body preservation for webhook integrations
+- JSON body parsing (maintained for future extensibility)
 - URL-encoded form data parsing
 - Request logging middleware with timing and response capture
-- CORS and security headers (implied for production use)
 
 **Development Setup**
 - Custom Vite middleware integration for HMR during development
@@ -66,42 +78,21 @@ Preferred communication style: Simple, everyday language.
 - Production build creates bundled server in `dist/` and static assets in `dist/public/`
 
 **API Structure**
-- RESTful API pattern with `/api` prefix for all backend routes
-- Modular route registration system in `server/routes.ts`
-- Storage abstraction layer with interface-based design (`IStorage`)
+- Minimal route registration system in `server/routes.ts` (prepared for future endpoints)
+- Empty storage interface in `server/storage.ts` (ready for backend expansion)
+- No active API endpoints - all content is static/frontend-only
 
 ### Data Storage Solutions
 
-**Database**
-- **PostgreSQL** as the primary database (via Neon serverless)
-- **Drizzle ORM** for type-safe database queries and schema management
-- Schema defined in `shared/schema.ts` for code sharing between client and server
-
-**Current Schema**
-- `users` table with id (UUID), username (unique), and password fields
-- Schema validation using Drizzle-Zod for runtime type checking
-
-**Storage Abstraction**
-- In-memory storage implementation (`MemStorage`) for development/testing
-- Interface-based design (`IStorage`) allows easy swapping to database implementation
-- CRUD operations abstracted behind storage interface methods
-
-**Migration Strategy**
-- Drizzle Kit for schema migrations in `migrations/` directory
-- Database URL configured via environment variable
-- `db:push` script for pushing schema changes to database
-
-### Authentication & Authorization
-
 **Current State**
-- User schema exists with username/password fields
-- No active authentication implementation in the codebase yet
-- Session management dependencies installed (connect-pg-simple for PostgreSQL session store)
+- Frontend-only application with no backend database
+- All content is hardcoded in React components
+- `shared/schema.ts` and `server/storage.ts` maintained as minimal stubs for future extensibility
 
-**Anticipated Pattern**
-- Session-based authentication (indicated by session store dependency)
-- Credentials included in fetch requests (credentials: "include")
-- 401 handling in query client with configurable behavior (returnNull or throw)
+**Future Expansion**
+- Database dependencies (Drizzle ORM, Neon PostgreSQL) installed but not configured
+- Ready for backend API implementation when needed
+- Storage interface pattern prepared for easy CRUD operation addition
 
 ### External Dependencies
 
@@ -136,5 +127,35 @@ Preferred communication style: Simple, everyday language.
 - Generated images for programs, testimonials, gallery sections
 
 **Database Service**
-- **Neon Serverless PostgreSQL** (@neondatabase/serverless) - Serverless PostgreSQL with edge-compatible driver
-- Connection via DATABASE_URL environment variable
+- **Neon Serverless PostgreSQL** (@neondatabase/serverless) - Installed for future use
+- Not currently configured or used (frontend-only architecture)
+
+## Key Features
+
+**Navigation System**
+- Responsive top navigation with dropdown menus
+- Contact dropdown includes "Contact Us" and "Share Feedback" options
+- Mobile hamburger menu with smooth transitions
+- Active page highlighting
+
+**Program Sections**
+- Quality Education
+- Women Empowerment
+- Health and Wellness
+- Community Development
+- Skill Development and Training
+- Environmental Initiatives
+- All "Learn More" buttons properly linked to dedicated sector pages
+
+**User Engagement**
+- Animated hero section with floating image effect
+- Gallery with modern card layouts
+- Testimonials section
+- Feedback form with toast notifications
+- Call-to-action sections throughout the site
+
+**Design Elements**
+- Consistent use of primary orange (#FF6B35) and accent teal (#4ECDC4) colors
+- Clean, modern UI with card-based layouts
+- Smooth animations and transitions
+- Fully responsive design for all screen sizes
