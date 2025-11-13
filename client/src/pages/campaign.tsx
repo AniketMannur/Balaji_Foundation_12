@@ -328,64 +328,75 @@ export default function CampaignPage() {
       />
 
       <AnimatedSection background="white">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6">
-            <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${campaign.color} mb-6 opacity-0 animate-fade-in`}>
-              <Icon className="w-12 h-12 text-white" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white opacity-0 animate-slide-in-left delay-100">
-              About This Campaign
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed opacity-0 animate-slide-in-left delay-200">
-              {campaign.description}
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed opacity-0 animate-slide-in-left delay-300">
-              {campaign.longDescription}
-            </p>
+        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+          {/* About This Campaign Card */}
+          <Card className="p-8 opacity-0 animate-fade-in-up delay-100 hover-elevate" data-testid="card-about-campaign">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className={`flex-shrink-0 p-3 rounded-xl bg-gradient-to-br ${campaign.color}`}>
+                  <Icon className="w-8 h-8 text-white" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                  About This Campaign
+                </h2>
+              </div>
+              
+              <div className="space-y-4">
+                <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                  {campaign.description}
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  {campaign.longDescription}
+                </p>
+              </div>
 
-            {/* Stats Section */}
-            <div className="grid grid-cols-3 gap-4 pt-6">
-              {campaign.stats.map((stat, index) => {
-                const StatIcon = stat.icon;
-                return (
-                  <Card 
-                    key={stat.label} 
-                    className={`p-4 text-center opacity-0 animate-fade-in-up hover-elevate`}
-                    style={{ animationDelay: `${(index + 4) * 100}ms` }}
-                  >
-                    <StatIcon className={`w-6 h-6 mx-auto mb-2 bg-gradient-to-br ${campaign.color} bg-clip-text text-transparent`} />
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                      {stat.value}
+              {/* Stats Section */}
+              <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                {campaign.stats.map((stat, index) => {
+                  const StatIcon = stat.icon;
+                  return (
+                    <div 
+                      key={stat.label} 
+                      className="text-center p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50"
+                    >
+                      <StatIcon className={`w-5 h-5 mx-auto mb-2 bg-gradient-to-br ${campaign.color} bg-clip-text text-transparent`} />
+                      <div className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                        {stat.label}
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">
-                      {stat.label}
-                    </div>
-                  </Card>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          </Card>
 
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 opacity-0 animate-fade-in">
-              Campaign Highlights
-            </h3>
-            <div className="grid gap-4">
+          {/* Campaign Highlights Card */}
+          <Card className="p-8 opacity-0 animate-fade-in-up delay-200 hover-elevate" data-testid="card-campaign-highlights">
+            <div className="flex items-center gap-4 mb-6">
+              <div className={`flex-shrink-0 p-3 rounded-xl bg-gradient-to-br ${campaign.color}`}>
+                <CheckCircle2 className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                Campaign Highlights
+              </h3>
+            </div>
+            
+            <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
               {campaign.details.map((detail, index) => (
-                <Card
+                <div
                   key={index}
-                  className="p-4 opacity-0 animate-fade-in-up hover-elevate"
-                  style={{ animationDelay: `${(index + 2) * 50}ms` }}
+                  className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50 transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                   data-testid={`campaign-detail-${index}`}
                 >
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className={`w-5 h-5 mt-0.5 flex-shrink-0 bg-gradient-to-br ${campaign.color} bg-clip-text text-transparent`} />
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">{detail}</span>
-                  </div>
-                </Card>
+                  <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 bg-gradient-to-br ${campaign.color} bg-clip-text text-transparent`} />
+                  <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{detail}</span>
+                </div>
               ))}
             </div>
-          </div>
+          </Card>
         </div>
       </AnimatedSection>
 
