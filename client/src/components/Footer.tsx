@@ -42,7 +42,7 @@ export default function Footer() {
               Empowering communities through education, healthcare, and sustainable development since 2015.
             </p>
             <div className="font-devanagari text-sm text-secondary">
-              सर्वे भवन्तु सुखिनः | सर्वे सन्तु निरामयाः
+              सर्वे भवन्तु सुखिनः | सर्वे सन्तु निरामया
             </div>
           </div>
 

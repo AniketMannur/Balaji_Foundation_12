@@ -44,11 +44,11 @@ export function ModernNavigation() {
     {
       label: "We Work In",
       subLinks: [
-        { href: "/sectors/education", label: "Quality Education" },
-        { href: "/sectors/health", label: "Healthcare Services" },
+        { href: "/sectors/education", label: " Education" },
+        { href: "/sectors/health", label: "Healthcare " },
         { href: "/sectors/women-empowerment", label: "Women Empowerment" },
         { href: "/sectors/community-development", label: "Community Development" },
-        { href: "/sectors/skill-development", label: "Skill Training" },
+        { href: "/sectors/skill-development", label: "Skill Development" },
         { href: "/sectors/environment-conservation", label: "Environmental Initiatives" },
       ],
     },
@@ -94,7 +94,7 @@ export function ModernNavigation() {
                   Shree Balaji Foundation
                 </span>
                 <span className={`text-xs ${isScrolled ? "text-gray-600 dark:text-gray-400" : "text-white/90"}`}>
-                  सर्वे भवन्तु सुखिनः। सर्वे सन्तु निरामयाः।
+                  सर्वे भवन्तु सुखिनः। सर्वे सन्तु निरामया।
                 </span>
               </div>
             </div>

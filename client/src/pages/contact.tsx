@@ -27,7 +27,7 @@ export default function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 8087678977',
+      value: '+91 8087678977, 8459485202',
       description: 'Mon-Fri from 9am to 6pm',
     },
     {

@@ -9,13 +9,13 @@ import envImage from '@assets/generated_images/Environmental_awareness_tree_plan
 export default function ProgramsExample() {
   const programs = [
     {
-      title: 'Quality Education',
+      title: 'Education',
       category: 'Education',
       description: 'Providing access to quality education and learning resources for underprivileged children.',
       image: eduImage,
     },
     {
-      title: 'Healthcare Services',
+      title: 'Healthcare ',
       category: 'Healthcare',
       description: 'Free medical camps and healthcare services for communities in need.',
       image: healthImage,
@@ -33,7 +33,7 @@ export default function ProgramsExample() {
       image: communityImage,
     },
     {
-      title: 'Skill Training',
+      title: 'Skill Development',
       category: 'Training',
       description: 'Vocational training programs to enhance employability and self-reliance.',
       image: skillImage,
