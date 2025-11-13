@@ -146,23 +146,27 @@ const campaignData: Record<string, {
   'cancer-initiative-camp': {
     title: 'Cancer Initiative Camp',
     icon: Ribbon,
-    description: 'Raising awareness about cancer prevention, early detection, and providing support to cancer patients and their families.',
-    longDescription: 'Cancer awareness and early detection can save lives. Our cancer initiative camps focus on educating communities about cancer prevention, organizing screening programs, and providing support to cancer patients. We collaborate with medical institutions to ensure that underprivileged patients receive the care and assistance they need during their treatment journey.',
+    description: 'Raising awareness about cancer prevention, early detection, and providing support to cancer patients and their families through comprehensive screening programs.',
+    longDescription: 'Cancer awareness and early detection can save lives. Screening looks for early signs of cancer or pre-cancerous conditions before any symptoms appear. It can help spot cancers at an early stage, when treatment is more likely to be successful and the chances of survival are much better. Hence, screening has been the core objective of our cancer screening program. The three most commonly occurring cancers in India are those of the breast, uterine cervix and lip/oral cavity. Screening is effective in the prevention and early detection of breast cancer, cervical cancer and oral cancer.',
     color: 'from-pink-500 to-pink-600',
     stats: [
-      { label: 'Screenings Conducted', value: '3,000+', icon: Users },
-      { label: 'Awareness Programs', value: '40+', icon: Target },
-      { label: 'Families Supported', value: '500+', icon: Heart },
+      { label: 'People Examined', value: '117,622', icon: Users },
+      { label: 'Medical Camps', value: '104', icon: Target },
+      { label: 'Cataract Surgeries', value: '1,609', icon: Heart },
     ],
     details: [
-      'Cancer awareness and education',
-      'Early detection screening programs',
-      'Support for cancer patients',
-      'Nutritional guidance for patients',
-      'Mental health counseling',
-      'Financial assistance information',
-      'Survivor support groups',
-      'Prevention and lifestyle guidance',
+      'Cancer Awareness & Early Detection',
+      'Breast Cancer & Cervical Cancer Screening',
+      'General Medical Camps - 104 camps conducted',
+      'Total People Examined - 117,622 individuals',
+      'Eye Check & Cataract Surgery Camps - 54 camps',
+      'People Examined for Eye Conditions - 5,279',
+      'Cataract Surgeries Performed - 1,609',
+      'Breast & Cervical Cancer Screening - 37 camps',
+      'Women Examined - 3,299',
+      'Thermal Screenings Conducted - 2,447',
+      'Cancer Awareness Programs - 117 sessions',
+      'Prevention & Lifestyle Guidance',
     ],
   },
 };
@@ -203,26 +207,26 @@ function ImageCarousel({ images, title }: CarouselProps) {
 
     const autoplayInterval = setInterval(() => {
       emblaApi.scrollNext();
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(autoplayInterval);
   }, [emblaApi]);
 
   return (
-    <div className="relative max-w-5xl mx-auto">
-      <div className="overflow-hidden rounded-2xl" ref={emblaRef} data-testid={`carousel-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+    <div className="relative max-w-6xl mx-auto">
+      <div className="overflow-hidden" ref={emblaRef} data-testid={`carousel-${title.toLowerCase().replace(/\s+/g, '-')}`}>
         <div className="flex">
           {images.map((image, index) => (
             <div
               key={index}
-              className="flex-[0_0_100%] min-w-0 px-4"
+              className="flex-[0_0_100%] min-w-0"
               data-testid={`carousel-slide-${index}`}
             >
-              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center" style={{ minHeight: '500px', maxHeight: '600px' }}>
+              <div className="relative overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center" style={{ height: '500px' }}>
                 <img
                   src={image}
                   alt={`${title} ${index + 1}`}
-                  className="max-w-full max-h-[600px] w-auto h-auto object-contain"
+                  className="w-full h-full object-cover"
                   loading="eager"
                   data-testid={`carousel-image-${index}`}
                 />
@@ -237,7 +241,7 @@ function ImageCarousel({ images, title }: CarouselProps) {
         size="icon"
         variant="outline"
         onClick={scrollPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg z-10"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg z-10"
         data-testid="button-carousel-prev"
         aria-label="Previous slide"
       >
@@ -247,7 +251,7 @@ function ImageCarousel({ images, title }: CarouselProps) {
         size="icon"
         variant="outline"
         onClick={scrollNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg z-10"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg z-10"
         data-testid="button-carousel-next"
         aria-label="Next slide"
       >
@@ -260,10 +264,10 @@ function ImageCarousel({ images, title }: CarouselProps) {
           <button
             key={index}
             onClick={() => emblaApi?.scrollTo(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               index === selectedIndex
                 ? 'bg-primary w-8'
-                : 'bg-gray-300 hover:bg-gray-400'
+                : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 w-2'
             }`}
             data-testid={`carousel-dot-${index}`}
             aria-label={`Go to slide ${index + 1}`}
@@ -324,7 +328,7 @@ export default function CampaignPage() {
       />
 
       <AnimatedSection background="white">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
             <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${campaign.color} mb-6 opacity-0 animate-fade-in`}>
               <Icon className="w-12 h-12 text-white" />
@@ -346,7 +350,8 @@ export default function CampaignPage() {
                 return (
                   <Card 
                     key={stat.label} 
-                    className={`p-4 text-center opacity-0 animate-fade-in-up delay-${(index + 4) * 100}`}
+                    className={`p-4 text-center opacity-0 animate-fade-in-up hover-elevate`}
+                    style={{ animationDelay: `${(index + 4) * 100}ms` }}
                   >
                     <StatIcon className={`w-6 h-6 mx-auto mb-2 bg-gradient-to-br ${campaign.color} bg-clip-text text-transparent`} />
                     <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
@@ -361,23 +366,26 @@ export default function CampaignPage() {
             </div>
           </div>
 
-          <Card className="p-8 opacity-0 animate-fade-in-up delay-200">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 opacity-0 animate-fade-in">
               Campaign Highlights
             </h3>
-            <div className="space-y-4">
+            <div className="grid gap-4">
               {campaign.details.map((detail, index) => (
-                <div
+                <Card
                   key={index}
-                  className="flex items-start gap-3 opacity-0 animate-fade-in-up"
-                  style={{ animationDelay: `${(index + 8) * 100}ms` }}
+                  className="p-4 opacity-0 animate-fade-in-up hover-elevate"
+                  style={{ animationDelay: `${(index + 2) * 50}ms` }}
+                  data-testid={`campaign-detail-${index}`}
                 >
-                  <CheckCircle2 className={`w-5 h-5 mt-0.5 flex-shrink-0 bg-gradient-to-br ${campaign.color} bg-clip-text text-transparent`} />
-                  <span className="text-gray-600 dark:text-gray-400">{detail}</span>
-                </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className={`w-5 h-5 mt-0.5 flex-shrink-0 bg-gradient-to-br ${campaign.color} bg-clip-text text-transparent`} />
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">{detail}</span>
+                  </div>
+                </Card>
               ))}
             </div>
-          </Card>
+          </div>
         </div>
       </AnimatedSection>
 
