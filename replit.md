@@ -6,9 +6,17 @@ This is a frontend-only website for Shree Balaji Foundation, a non-profit organi
 
 The application is built as a modern single-page application (SPA) with a pure React frontend using Vite for development and production builds. The architecture is completely frontend-only, making it suitable for static hosting platforms like Vercel, Netlify, or GitHub Pages.
 
-## Recent Changes (November 12, 2025)
+## Recent Changes (November 13, 2025)
 
 ### Latest Session
+- **Medical Camp Carousel**: Added interactive image carousel to Medical Campaign page featuring 14 real medical camp photos
+  - Autoplay functionality: slides advance automatically every 4 seconds
+  - Manual navigation: previous/next buttons and dot indicators for slide selection
+  - Responsive design with proper aspect ratio and shadow effects
+  - Accessibility improvements with aria-labels on navigation controls
+  - Uses embla-carousel-react for smooth transitions and infinite looping
+
+### Previous Session (November 12, 2025)
 - **Frontend-Only Conversion**: Completely removed Express server and all backend code
 - **Vercel Deployment Ready**: Configured for static deployment with vercel.json
 - **Education Image Update**: Replaced education program image with user-provided image
@@ -140,6 +148,13 @@ Preferred communication style: Simple, everyday language.
 - Skill Development and Training
 - Environmental Initiatives
 - All "Learn More" buttons properly linked to dedicated sector pages
+
+**Campaign Sections**
+- Medical Camp (with interactive photo carousel showcasing 14 real medical camp activities)
+- Road Safety Camp
+- Blood Donation Camp
+- Cancer Initiative Camp
+- All campaigns accessible via dropdown in navigation menu
 
 **User Engagement**
 - Animated hero section with floating image effect
