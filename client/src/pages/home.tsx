@@ -3,6 +3,7 @@ import { AboutSection } from '@/components/AboutSection';
 import { ProgramsSection } from '@/components/ProgramsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import CallToAction from '@/components/CallToAction';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ProgramsSection />
       <TestimonialsSection />
       <CallToAction />
+      <ScrollNavigation />
     </>
   );
 }

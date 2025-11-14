@@ -50,6 +50,8 @@ export function ModernNavigation() {
         { href: "/sectors/community-development", label: "Community Development" },
         { href: "/sectors/skill-development", label: "Skill Development" },
         { href: "/sectors/environment-conservation", label: "Environmental Conservation" },
+        { href: "/sectors/social-welfare", label: "Social Welfare" },
+        { href: "/sectors/art-and-culture", label: "Art and Culture" },
       ],
     },
     { href: "/gallery", label: "Gallery" },
