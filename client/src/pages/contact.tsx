@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, Phone, MapPin, Clock, Star } from 'lucide-react';
 import { useState } from 'react';
 import { ScrollNavigation } from '@/components/ScrollNavigation';
@@ -103,7 +102,7 @@ export default function Contact() {
 
             <Card className="p-8 border-2">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''} />
                 <input type="hidden" name="subject" value="New Contact Form Submission from Shree Balaji Foundation Website" />
                 <input type="hidden" name="from_name" value="Shree Balaji Foundation Website" />
                 

@@ -26,10 +26,26 @@ This is the official website for Shree Balaji Foundation, a registered non-profi
 The contact form uses **Web3Forms** (https://web3forms.com) to send emails without a backend server.
 
 **Setup Required:**
-1. Visit https://web3forms.com and create a free account
-2. Generate an access key for your email address
-3. Replace `YOUR_WEB3FORMS_ACCESS_KEY` in `client/src/pages/contact.tsx` (line 109) with your actual access key
-4. Configure the email address where you want to receive contact form submissions
+
+1. **Create Web3Forms Account:**
+   - Visit https://web3forms.com
+   - Sign up with your email address (contact@shreebalajifoundation.org.in)
+   - Verify your email address
+
+2. **Generate Access Key:**
+   - Log in to your Web3Forms dashboard
+   - Click "Create New Access Key"
+   - Copy the generated access key
+
+3. **Add Environment Variable in Replit:**
+   - Go to Replit Secrets (in the Tools panel)
+   - Add a new secret:
+     - Key: `VITE_WEB3FORMS_ACCESS_KEY`
+     - Value: [Paste your Web3Forms access key]
+   - Save the secret
+
+4. **Restart the Application:**
+   - The contact form will now send emails to your registered email address
 
 **Features:**
 - Free tier: 250 submissions/month
@@ -37,9 +53,22 @@ The contact form uses **Web3Forms** (https://web3forms.com) to send emails witho
 - Built-in spam protection
 - GDPR compliant
 - No backend required
+- Secure: API key stored as environment variable
 
-**Important Note:** 
-The user declined to use Replit's email integration (Resend). This note is here to remind future sessions that Web3Forms was chosen as the solution and the access key needs to be configured by the user.
+**How It Works:**
+- User fills out the contact form
+- Form data is submitted to Web3Forms API via HTTPS
+- Web3Forms sends an email to your registered email address
+- User receives success/error notification via toast
+
+**Important Security Note:** 
+The access key is stored as an environment variable (`VITE_WEB3FORMS_ACCESS_KEY`) and not hardcoded in the source code. This follows security best practices and prevents the API key from being exposed in the repository.
+
+**Troubleshooting:**
+- If form submissions fail, check that the `VITE_WEB3FORMS_ACCESS_KEY` environment variable is set correctly
+- Verify your Web3Forms account is active and email is verified
+- Check browser console for any error messages
+- Note: Environment variables starting with `VITE_` are exposed to the frontend (this is safe for Web3Forms public API keys)
 
 ## Project Structure
 - `/client` - Frontend React application
