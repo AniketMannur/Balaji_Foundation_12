@@ -24,18 +24,21 @@ export default function Contact() {
       title: 'Email',
       value: 'contact@shreebalajifoundation.org.in',
       description: 'Send us an email anytime',
+      link: 'mailto:contact@shreebalajifoundation.org.in',
     },
     {
       icon: Phone,
       title: 'Phone',
       value: '+91 8087678977, 8459485202',
       description: 'Mon-Fri from 9am to 6pm',
+      link: 'tel:+918087678977',
     },
     {
       icon: MapPin,
       title: 'Address',
       value: 'Pune, Maharashtra, India',
       description: 'Visit our office',
+      link: 'https://www.google.com/maps/place/Pune,+Maharashtra',
     },
     {
       icon: Clock,
@@ -193,6 +196,21 @@ export default function Contact() {
 
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
+              const content = (
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center flex-shrink-0">
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                      {info.title}
+                    </h3>
+                    <p className="text-gray-900 dark:text-white font-medium mb-1">{info.value}</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">{info.description}</p>
+                  </div>
+                </div>
+              );
+              
               return (
                 <Card
                   key={info.title}
@@ -200,18 +218,19 @@ export default function Contact() {
                     (index + 2) * 100
                   }`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center flex-shrink-0">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                        {info.title}
-                      </h3>
-                      <p className="text-gray-900 dark:text-white font-medium mb-1">{info.value}</p>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">{info.description}</p>
-                    </div>
-                  </div>
+                  {info.link ? (
+                    <a
+                      href={info.link}
+                      target={info.icon === MapPin ? '_blank' : undefined}
+                      rel={info.icon === MapPin ? 'noopener noreferrer' : undefined}
+                      className="block"
+                      data-testid={`link-contact-${info.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    content
+                  )}
                 </Card>
               );
             })}
@@ -225,6 +244,7 @@ export default function Contact() {
               <Button
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white/20"
+                onClick={() => window.location.href = 'tel:+918087678977'}
                 data-testid="button-urgent-contact"
               >
                 Call Now
