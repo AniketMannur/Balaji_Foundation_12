@@ -96,7 +96,7 @@ export function ModernNavigation() {
                   Shree Balaji Foundation
                 </span>
                 <span className={`text-xs ${isScrolled ? "text-gray-600 dark:text-gray-400" : "text-white/90"}`}>
-                  सर्वे भवन्तु सुखिनः। सर्वे सन्तु निरामया।
+                  सर्वे भवन्तु सुखिनः | सर्वे संतु निरामयाः
                 </span>
               </div>
             </div>

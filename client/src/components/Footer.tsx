@@ -6,6 +6,10 @@ import logoImage from '@assets/image_1762696322960.png';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const quickLinks = [
     { label: 'About Us', href: '/about-us' },
     { label: 'Impact', href: '/impact' },
@@ -54,6 +58,7 @@ export default function Footer() {
                   <Link href={link.href}>
                     <span
                       className="text-gray-300 hover:text-secondary transition-colors cursor-pointer"
+                      onClick={scrollToTop}
                       data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {link.label}
@@ -72,6 +77,7 @@ export default function Footer() {
                   <Link href={sector.href}>
                     <span
                       className="text-gray-300 hover:text-secondary transition-colors cursor-pointer"
+                      onClick={scrollToTop}
                       data-testid={`link-sector-${sector.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {sector.label}
@@ -87,15 +93,44 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-gray-300">
                 <Mail className="h-5 w-5 mt-0.5 flex-shrink-0 text-secondary" />
-                <span>contact@shreebalajifoundation.org.in</span>
+                <a 
+                  href="mailto:contact@shreebalajifoundation.org.in"
+                  className="hover:text-secondary transition-colors"
+                  data-testid="link-email"
+                >
+                  contact@shreebalajifoundation.org.in
+                </a>
               </li>
               <li className="flex items-start gap-2 text-gray-300">
                 <Phone className="h-5 w-5 mt-0.5 flex-shrink-0 text-secondary" />
-                <span>+91 8087678977, 8459485202</span>
+                <div className="flex flex-col gap-1">
+                  <a 
+                    href="tel:+918087678977"
+                    className="hover:text-secondary transition-colors"
+                    data-testid="link-phone-1"
+                  >
+                    +91 8087678977
+                  </a>
+                  <a 
+                    href="tel:+918459485202"
+                    className="hover:text-secondary transition-colors"
+                    data-testid="link-phone-2"
+                  >
+                    +91 8459485202
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-2 text-gray-300">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-secondary" />
-                <span>Pune, Maharashtra, India</span>
+                <a 
+                  href="https://www.google.com/maps/place/Pune,+Maharashtra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary transition-colors"
+                  data-testid="link-location"
+                >
+                  Pune, Maharashtra, India
+                </a>
               </li>
             </ul>
             <div className="flex gap-2 mt-4">
