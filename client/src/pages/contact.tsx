@@ -10,12 +10,46 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Mail, Phone, MapPin, Clock, Star } from 'lucide-react';
 import { useState } from 'react';
 import { ScrollNavigation } from '@/components/ScrollNavigation';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Contact() {
   const [rating, setRating] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: 'Message Sent Successfully!',
+          description: 'Thank you for contacting us. We will get back to you soon.',
+        });
+        e.currentTarget.reset();
+        setRating(0);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: 'Failed to Send Message',
+        description: 'Please try again or contact us directly via email or phone.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -69,6 +103,10 @@ export default function Contact() {
 
             <Card className="p-8 border-2">
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="subject" value="New Contact Form Submission from Shree Balaji Foundation Website" />
+                <input type="hidden" name="from_name" value="Shree Balaji Foundation Website" />
+                
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-gray-900 dark:text-white">
@@ -76,6 +114,7 @@ export default function Contact() {
                     </Label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="Your full name"
                       required
                       data-testid="input-name"
@@ -87,6 +126,7 @@ export default function Contact() {
                     </Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="your@email.com"
                       required
@@ -102,17 +142,19 @@ export default function Contact() {
                     </Label>
                     <Input
                       id="phone"
+                      name="phone"
                       type="tel"
                       placeholder="Your phone number"
                       data-testid="input-phone"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-gray-900 dark:text-white">
+                    <Label htmlFor="subject_field" className="text-gray-900 dark:text-white">
                       Subject *
                     </Label>
                     <Input
-                      id="subject"
+                      id="subject_field"
+                      name="subject_field"
                       placeholder="Subject of your message"
                       required
                       data-testid="input-subject"
@@ -124,19 +166,21 @@ export default function Contact() {
                   <Label htmlFor="category" className="text-gray-900 dark:text-white">
                     Category *
                   </Label>
-                  <Select required>
-                    <SelectTrigger data-testid="select-category">
-                      <SelectValue placeholder="Select a category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="general">General Inquiry</SelectItem>
-                      <SelectItem value="volunteer">Volunteer Opportunities</SelectItem>
-                      <SelectItem value="donation">Donations</SelectItem>
-                      <SelectItem value="partnership">Partnership</SelectItem>
-                      <SelectItem value="feedback">Feedback</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <select
+                    id="category"
+                    name="category"
+                    required
+                    className="w-full px-4 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    data-testid="select-category"
+                  >
+                    <option value="">Select a category</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="volunteer">Volunteer Opportunities</option>
+                    <option value="donation">Donations</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
 
                 <div className="space-y-2">
@@ -145,6 +189,7 @@ export default function Contact() {
                   </Label>
                   <Textarea
                     id="message"
+                    name="message"
                     placeholder="How can we help you?"
                     rows={6}
                     required
@@ -156,6 +201,7 @@ export default function Contact() {
                   <Label className="text-gray-900 dark:text-white">
                     Rate Your Experience (Optional)
                   </Label>
+                  <input type="hidden" name="rating" value={rating} />
                   <div className="flex gap-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -181,9 +227,10 @@ export default function Contact() {
                   type="submit"
                   size="lg"
                   className="w-full"
+                  disabled={isSubmitting}
                   data-testid="button-submit"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </Card>
