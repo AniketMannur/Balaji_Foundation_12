@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowUp, ArrowDown } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function ScrollNavigation() {
@@ -18,15 +18,11 @@ export function ScrollNavigation() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  };
-
   if (!showScrollTop) return null;
 
   return (
     <div 
-      className="fixed right-6 bottom-6 z-40 flex flex-col gap-2"
+      className="fixed right-6 bottom-6 z-40"
       data-testid="scroll-navigation"
     >
       <Button
@@ -37,15 +33,6 @@ export function ScrollNavigation() {
         data-testid="button-scroll-top"
       >
         <ArrowUp className="w-5 h-5" />
-      </Button>
-      <Button
-        size="icon"
-        variant="default"
-        className="rounded-full shadow-lg bg-orange-500 hover:bg-orange-600 text-white"
-        onClick={scrollToBottom}
-        data-testid="button-scroll-bottom"
-      >
-        <ArrowDown className="w-5 h-5" />
       </Button>
     </div>
   );

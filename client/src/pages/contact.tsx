@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, Phone, MapPin, Clock, Star } from 'lucide-react';
 import { useState } from 'react';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 export default function Contact() {
   const [rating, setRating] = useState(0);
@@ -254,6 +255,7 @@ export default function Contact() {
           </div>
         </div>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }

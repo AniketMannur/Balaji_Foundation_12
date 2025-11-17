@@ -3,6 +3,7 @@ import { PageHero } from '@/components/PageHero';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { Card } from '@/components/ui/card';
 import { Users, Heart, GraduationCap, Sprout, Building2, Award, TrendingUp, Target } from 'lucide-react';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 export default function Impact() {
   const impactStats = [
@@ -198,6 +199,7 @@ export default function Impact() {
           </Card>
         </div>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }

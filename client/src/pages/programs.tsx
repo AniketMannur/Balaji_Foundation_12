@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { GraduationCap, Heart, Users, Building2, Wrench, Leaf, ArrowRight } from 'lucide-react';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 
 import healthImage from '@assets/image_1763015102424.png';
@@ -155,6 +156,7 @@ export default function ProgramsPage() {
           </div>
         </div>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }

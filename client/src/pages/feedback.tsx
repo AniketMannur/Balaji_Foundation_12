@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 export default function Feedback() {
   const { toast } = useToast();
@@ -189,6 +190,7 @@ export default function Feedback() {
             </Card>
           </div>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }

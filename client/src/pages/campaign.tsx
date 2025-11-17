@@ -7,6 +7,7 @@ import { Stethoscope, Car, Droplet, Ribbon, CheckCircle2, ChevronLeft, ChevronRi
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 // Import medical camp images
 import medicalCamp1 from '@assets/WhatsApp Image 2025-11-12 at 8.26.35 PM_1763017196320.jpeg';
@@ -439,6 +440,7 @@ export default function CampaignPage() {
           </div>
         </div>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }

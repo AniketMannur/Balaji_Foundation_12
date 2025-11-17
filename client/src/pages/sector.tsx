@@ -4,6 +4,7 @@ import { PageHero } from '@/components/PageHero';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { Card } from '@/components/ui/card';
 import { GraduationCap, Heart, Palette, Building2, Sprout, Briefcase, Users, HandHeart, CheckCircle2 } from 'lucide-react';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 import eduImage from '@assets/education_program.png';
 import healthImage from '@assets/generated_images/Healthcare_medical_checkup_scene_932d6355.png';
@@ -230,6 +231,7 @@ export default function SectorPage() {
           </div>
         </div>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }

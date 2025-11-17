@@ -4,6 +4,7 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { Card } from '@/components/ui/card';
 import { Heart, Users, Target, Award, Shield, TrendingUp } from 'lucide-react';
 import aboutImage from '@assets/download_1762698540874.png';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 export default function AboutUs() {
   const values = [
@@ -153,6 +154,7 @@ export default function AboutUs() {
           </p>
         </Card>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }

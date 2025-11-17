@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Camera, Heart, Users } from 'lucide-react';
 import medicalBanner from '@assets/image_1762700142631.png';
 import activitiesCollage from '@assets/image_1762700250649.png';
+import { ScrollNavigation } from '@/components/ScrollNavigation';
 
 export default function GalleryPage() {
   const highlights = [
@@ -133,6 +134,7 @@ export default function GalleryPage() {
           </div>
         </div>
       </AnimatedSection>
+      <ScrollNavigation />
     </PageLayout>
   );
 }
